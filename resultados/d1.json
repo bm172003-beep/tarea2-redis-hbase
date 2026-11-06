@@ -1,0 +1,21 @@
+{
+ "modo": "XACK después del put",
+ "codigo_salida_ingesta1": 1,
+ "pendientes": {
+  "cantidad": 200,
+  "consumidores": [
+   {
+    "name": "ingesta-1",
+    "pending": 200
+   }
+  ]
+ },
+ "xpending_final": 0,
+ "filas_finales": [
+  853953,
+  853953
+ ],
+ "esperado": 853953,
+ "recuperadas_con_2_versiones": 200,
+ "verificar_ok": true
+}

@@ -1,0 +1,83 @@
+{
+ "config": "aof",
+ "abrupto": false,
+ "antes": {
+  "stream_xlen": 3000,
+  "grupos": {
+   "ingesta": {
+    "pendientes": 200,
+    "lag": 2600,
+    "leidas": 400,
+    "consumidores": 1
+   },
+   "tablero": {
+    "pendientes": 0,
+    "lag": 0,
+    "leidas": 3000,
+    "consumidores": 1
+   }
+  },
+  "pendientes_por_consumidor": [
+   {
+    "name": "ingesta-1",
+    "pending": 200
+   }
+  ],
+  "ultimo_claves": 16,
+  "ventanas": {
+   "ventana:CC-001": 73,
+   "ventana:CC-002": 73,
+   "ventana:CC-005": 73,
+   "ventana:HUA-001": 61,
+   "ventana:HUA-002": 66,
+   "ventana:PEN-001": 68,
+   "ventana:SPP-002": 79,
+   "ventana:TAL-001": 79
+  },
+  "ranking_flujo": 8,
+  "ts_max": "1794021899500"
+ },
+ "despues": {
+  "stream_xlen": 3000,
+  "grupos": {
+   "ingesta": {
+    "pendientes": 200,
+    "lag": 2600,
+    "leidas": 400,
+    "consumidores": 1
+   },
+   "tablero": {
+    "pendientes": 0,
+    "lag": 0,
+    "leidas": 3000,
+    "consumidores": 1
+   }
+  },
+  "pendientes_por_consumidor": [
+   {
+    "name": "ingesta-1",
+    "pending": 200
+   }
+  ],
+  "ultimo_claves": 16,
+  "ventanas": {
+   "ventana:CC-001": 73,
+   "ventana:CC-002": 73,
+   "ventana:CC-005": 73,
+   "ventana:HUA-001": 61,
+   "ventana:HUA-002": 66,
+   "ventana:PEN-001": 68,
+   "ventana:SPP-002": 79,
+   "ventana:TAL-001": 79
+  },
+  "ranking_flujo": 8,
+  "ts_max": "1794021899500"
+ },
+ "ventana_de_perdida_eventos": 2600,
+ "filas_finales": [
+  853953,
+  853953
+ ],
+ "faltan": 0,
+ "verificar_ok": true
+}

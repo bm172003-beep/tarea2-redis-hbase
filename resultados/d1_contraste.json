@@ -1,0 +1,16 @@
+{
+ "modo": "contraste: XACK antes del put",
+ "codigo_salida_ingesta1": 1,
+ "pendientes": {
+  "cantidad": 0,
+  "consumidores": []
+ },
+ "xpending_final": 0,
+ "filas_finales": [
+  853756,
+  853756
+ ],
+ "esperado": 853953,
+ "filas_perdidas": 197,
+ "verificar_ok": false
+}

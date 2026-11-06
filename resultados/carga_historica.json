@@ -1,0 +1,61 @@
+{
+ "hardware": {
+  "sistema": "Windows-11-10.0.26300-SP0",
+  "procesador": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+  "python": "3.14.6",
+  "cpus": 6,
+  "ram_gb": 15.9
+ },
+ "tablas": {
+  "lecturas": {
+   "put": 864000,
+   "segundos": 50.9,
+   "put_por_s": 16986,
+   "filas": 846906,
+   "filas_esperadas": 846906,
+   "regiones": [
+    [
+     "(inicio)",
+     "CC-005"
+    ],
+    [
+     "CC-005",
+     "HUA-001"
+    ],
+    [
+     "HUA-001",
+     "SPP-002"
+    ],
+    [
+     "SPP-002",
+     "(fin)"
+    ]
+   ]
+  },
+  "lecturas_tipo": {
+   "put": 864000,
+   "segundos": 26.7,
+   "put_por_s": 32380,
+   "filas": 846906,
+   "filas_esperadas": 846906,
+   "regiones": [
+    [
+     "(inicio)",
+     "flujo_vehicular"
+    ],
+    [
+     "flujo_vehicular",
+     "flujo_vehicular#2026-11-04T12"
+    ],
+    [
+     "flujo_vehicular#2026-11-04T12",
+     "ocupacion_estacionamiento"
+    ],
+    [
+     "ocupacion_estacionamiento",
+     "(fin)"
+    ]
+   ]
+  }
+ }
+}

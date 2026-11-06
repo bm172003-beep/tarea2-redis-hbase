@@ -1,0 +1,17 @@
+{
+ "sin persistencia": [
+  3000,
+  3000,
+  3000
+ ],
+ "AOF everysec": [
+  0,
+  0,
+  0
+ ],
+ "AOF always": [
+  0,
+  0,
+  0
+ ]
+}

@@ -1,0 +1,18 @@
+# Los datos NO se versionan: se generan con la semilla (generador.py, semilla 2026).
+datos/
+*.parquet
+*.csv.gz
+*.rdb
+*.aof
+appendonlydir/
+
+# Secretos y entornos: ni claves ni .env (el .env del Lab 06 trae la clave del VPS)
+.env
+.env.*
+.venv/
+venv/
+
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+resultados/logs/

@@ -1,0 +1,56 @@
+# Tarea 2 — Redis (el presente, en memoria) + HBase (la historia, en disco).
+#
+#     docker compose build                 # una vez por máquina (~340 MB, necesita red)
+#     docker compose up -d --wait          # espera a que ambos respondan
+#     docker compose down                  # apaga (los volúmenes conservan los datos)
+#     docker compose down -v               # ... y borra también los volúmenes
+#
+# PERSISTENCIA DE REDIS — decisión explícita: AOF con fsync cada segundo, en un volumen con nombre.
+# Qué pierde: como mucho ~1 s de eventos si Redis muere de golpe (el stream, los grupos de
+# consumidores, sus pendientes y el tablero sobreviven a un reinicio). Por qué no "ninguna":
+# el stream es lo único que separa un evento de HBase; perderlo es perder historia. Por qué
+# no RDB: guarda fotos cada cierto tiempo y pierde todo lo escrito desde la última.
+# La configuración contraria (D.2) se levanta SIN editar este archivo:
+#
+#     REDIS_APPENDONLY=no docker compose up -d --force-recreate redis      # sin persistencia
+#     docker compose up -d --force-recreate redis                          # vuelta a AOF
+#
+# (`docker compose restart` NO sirve para cambiar la configuración: reusa el contenedor tal como estaba.)
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: pmd-t2-redis
+    command: ["redis-server", "--appendonly", "${REDIS_APPENDONLY:-yes}", "--appendfsync", "${REDIS_APPENDFSYNC:-everysec}", "--save", ""]
+    ports:
+      - "6379:6379"
+    volumes:
+      - pmd-t2-redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 2s
+      retries: 15
+
+  hbase:
+    build: .                        # el Dockerfile del Lab 07 (HBase 2.5 standalone + Thrift)
+    image: pmd-hbase
+    container_name: pmd-t2-hbase    # nombre propio: no choca con el pmd-hbase del Lab 07 si sigue en pie
+    hostname: pmd-hbase             # HBase registra su nombre de host en ZooKeeper: que sea fijo
+    ports:
+      - "9090:9090"                 # Thrift: happybase
+      - "16010:16010"               # interfaz web del HMaster y JMX
+    volumes:
+      - pmd-t2-hbase:/data
+    healthcheck:
+      test: ["CMD-SHELL", "echo \"exists 'hbase:meta'\" | hbase shell -n 2>/dev/null | grep -q 'does exist'"]
+      interval: 10s
+      timeout: 30s
+      retries: 18
+      start_period: 20s
+
+volumes:
+  pmd-t2-redis:
+    name: pmd-t2-redis
+  pmd-t2-hbase:
+    name: pmd-t2-hbase

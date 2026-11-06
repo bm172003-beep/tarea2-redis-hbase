@@ -1,0 +1,14 @@
+{
+ "sin persistencia": {
+  "xadd_por_s": 1964,
+  "ms_por_xadd": 0.509
+ },
+ "AOF everysec": {
+  "xadd_por_s": 2261,
+  "ms_por_xadd": 0.442
+ },
+ "AOF always": {
+  "xadd_por_s": 457,
+  "ms_por_xadd": 2.188
+ }
+}

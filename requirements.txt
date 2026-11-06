@@ -1,0 +1,4 @@
+redis>=5
+happybase>=1.3
+pandas>=2
+psutil>=5.9

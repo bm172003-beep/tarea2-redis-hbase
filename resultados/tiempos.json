@@ -1,0 +1,145 @@
+{
+ "hardware": {
+  "sistema": "Windows-11-10.0.26300-SP0",
+  "procesador": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+  "python": "3.14.6",
+  "cpus": 6,
+  "ram_gb": 15.9
+ },
+ "mediciones": {
+  "P1": {
+   "redis (16 HGETALL + ZREVRANGE, 1 viaje)": {
+    "mediana_ms": 0.91,
+    "corridas_ms": [
+     0.81,
+     0.93,
+     0.89,
+     1.01,
+     0.91
+    ]
+   },
+   "hbase (16 scans en reversa, limit 1) [reversa]": {
+    "mediana_ms": 150.39,
+    "corridas_ms": [
+     157.17,
+     159.54,
+     146.36,
+     150.39,
+     147.09
+    ]
+   },
+   "hbase ingenuo (recorrer toda 1 estación, ×16 habría que repetirlo)": {
+    "mediana_ms": 482.35,
+    "corridas_ms": [
+     523.7,
+     479.58,
+     482.35
+    ],
+    "filas_recorridas": 53656
+   }
+  },
+  "P2": {
+   "redis (ZRANGEBYSCORE ventana:* ×8, 1 viaje)": {
+    "mediana_ms": 8.23,
+    "corridas_ms": [
+     10.05,
+     7.33,
+     8.23,
+     10.19,
+     6.98
+    ]
+   }
+  },
+  "P3": {
+   "scan por rango (row_start/row_stop)": {
+    "mediana_ms": 14.71,
+    "corridas_ms": [
+     16.27,
+     14.71,
+     12.74,
+     13.27,
+     14.81
+    ],
+    "filas": 891
+   },
+   "recorrido de la tabla entera + filtro": {
+    "mediana_ms": 3780.71,
+    "corridas_ms": [
+     3663.93,
+     3780.71,
+     4047.12,
+     3897.39,
+     3696.76
+    ],
+    "filas": 891
+   }
+  },
+  "P4": {
+   "(a) lecturas: un rango por estación (catálogo en Redis)": {
+    "mediana_ms": 57.46,
+    "corridas_ms": [
+     118.43,
+     68.93,
+     57.46,
+     53.53,
+     49.51
+    ]
+   },
+   "(b) lecturas_tipo: un solo scan": {
+    "mediana_ms": 41.13,
+    "corridas_ms": [
+     41.4,
+     41.38,
+     41.13,
+     39.63,
+     40.45
+    ]
+   }
+  },
+  "P6": {
+   "redis (ranking) + hbase (5 estaciones × 5 días)": {
+    "mediana_ms": 1604.55,
+    "corridas_ms": [
+     1603.63,
+     1604.55,
+     1681.96
+    ]
+   }
+  },
+  "P5": {
+   "A estacion#ts (16 rangos)": {
+    "mediana_ms": 62.31,
+    "corridas_ms": [
+     63.57,
+     69.75,
+     59.61,
+     59.22,
+     62.31
+    ],
+    "lecturas": 1180
+   },
+   "B ts#estacion (1 rango)": {
+    "mediana_ms": 10.88,
+    "corridas_ms": [
+     12.19,
+     11.45,
+     10.55,
+     10.37,
+     10.88
+    ],
+    "lecturas": 1180
+   },
+   "C salt#ts#estacion (4 rangos)": {
+    "mediana_ms": 20.23,
+    "corridas_ms": [
+     20.23,
+     18.08,
+     49.88,
+     29.12,
+     19.46
+    ],
+    "lecturas": 1180
+   }
+  }
+ }
+}

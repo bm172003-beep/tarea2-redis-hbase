@@ -1,0 +1,64 @@
+{
+ "escrituras_por_region": {
+  "A estacion#ts": {
+   "(inicio)": 1761,
+   "CC-005": 1708,
+   "HUA-001": 1732,
+   "SPP-002": 1847
+  },
+  "B ts#estacion": {
+   "(inicio)": 0,
+   "2026-11-03": 0,
+   "2026-11-04": 0,
+   "2026-11-05": 0,
+   "2026-11-06": 5,
+   "2026-11-07": 7043
+  },
+  "C salt#ts#estacion": {
+   "(inicio)": 1818,
+   "1": 2219,
+   "2": 1731,
+   "3": 1280
+  }
+ },
+ "lectura_00_10_a_00_20": {
+  "A estacion#ts": {
+   "lecturas": 1180,
+   "mediana_ms": 62.31
+  },
+  "B ts#estacion": {
+   "lecturas": 1180,
+   "mediana_ms": 10.88
+  },
+  "C salt#ts#estacion": {
+   "lecturas": 1180,
+   "mediana_ms": 20.23
+  }
+ },
+ "estaciones_por_salt": {
+  "0": [
+   "CC-002",
+   "COR-002",
+   "PEN-001",
+   "SPP-002"
+  ],
+  "1": [
+   "CC-004",
+   "CHI-001",
+   "HUA-002",
+   "TAL-001",
+   "TAL-003"
+  ],
+  "2": [
+   "CC-001",
+   "CC-003",
+   "COR-001",
+   "SPP-001"
+  ],
+  "3": [
+   "CC-005",
+   "HUA-001",
+   "TAL-002"
+  ]
+ }
+}
