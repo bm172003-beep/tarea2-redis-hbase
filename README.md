@@ -14,7 +14,8 @@ python run.py        # Windows          ·          ./run.sh      # Linux / Mac
 
 Hace, en orden: ambiente virtual + `requirements.txt` → `docker compose up -d --wait --build` (la primera vez construye la imagen de HBase, ~340 MB, necesita red) → carga histórica → Redis limpio con los dos grupos → ingesta + tablero + productor (la hora en vivo dura ~3 min a 20×) → `verificar.py` → preguntas P1 a P4 y P6 → P5. Con `python run.py --experimentos` corre además D.1 y D.2 (modifican el estado de Redis y de HBase, por eso van al final y son opcionales). Tiempos de cada paso en `resultados/run_tiempos.json`.
 
-**Cuánto tarda:** ⟨medir: primera vez (con build) y repetición; PC: CPU / RAM⟩
+**Cuánto tarda:** ~5,8 min (pipeline sin experimentos) / ~13,3 min (con `--experimentos`, 795,3 s medidos en `resultados/run_tiempos.json`). La primera vez suma ~2 min por la construcción de la imagen de HBase.
+- **PC de prueba:** AMD Ryzen 5 (6 núcleos / 12 hilos), 15,9 GB RAM, Windows 11.
 
 Antes de correr, apaguen lo que no se use: el Postgres de la Tarea 1 y los contenedores de los Labs 06 y 07 (`docker compose down` en sus carpetas). Los puertos 6379, 9090 y 16010 deben estar libres y HBase necesita memoria.
 
@@ -86,7 +87,7 @@ Los cortes del Lab 07 (`COR`, `PEN`, `TAL`) dejaban las regiones de `lecturas` e
 - [x] Preguntas P1 a P6 — corridas en la máquina del equipo; tiempos y hardware en `resultados/tiempos.json`, P1 a P6 en `resultados/p1.json`, `p5.json`
 - [x] D.1 (y su contraste con el XACK antes del put) y D.2 (AOF, sin persistencia, SIGKILL, costo de fsync) — salidas en `resultados/d1*.json`, `d2_*.json`
 - [x] Informe (5 páginas) en `informe/` (Word editable y PDF)
-- [ ] Volver a correr `python experimento_d2.py aof` tras la corrección del consumidor reanudado (ver sección 6), y, opcional, `python experimento_d2.py perdida`
+- [x] Volver a correr `python experimento_d2.py aof` tras la corrección del consumidor reanudado (ver sección 6), y, opcional, `python experimento_d2.py perdida`
 
 ## Cómo se corre cada parte
 
